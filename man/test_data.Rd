@@ -7,8 +7,14 @@
 \format{
 A data frame with 20 rows and 8 columns:
 \describe{
-  \item{column 1 to 4}{X value}
-  \item{column 5 to 8}{Y value}
+  \item{X1}{X value}
+  \item{X2}{X value}
+  \item{X3}{X value}
+  \item{X4}{X value}
+  \item{Y1}{Y value}
+  \item{Y2}{Y value}
+  \item{Y3}{Y value}
+  \item{Y4}{Y value}
 }
 }
 \usage{
