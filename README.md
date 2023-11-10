@@ -20,7 +20,6 @@ devtools::install_github('lianchenglu/biostat625hw3',build_vignettes =T)
 ```
 
 ## Example
-
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
