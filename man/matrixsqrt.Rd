@@ -2,8 +2,7 @@
 % Please edit documentation in R/cca_simple.R, R/matrixsqrt.R
 \name{matrixsqrt}
 \alias{matrixsqrt}
-\title{Matrix Square Root with Regularization and Stability Check
-This function calculates the square root of a matrix.}
+\title{Matrix Square Root}
 \usage{
 matrixsqrt(m)
 
@@ -18,10 +17,8 @@ The square root of the input matrix m.
 The square root of the input matrix m.
 }
 \description{
-Matrix Square Root with Regularization and Stability Check
 This function calculates the square root of a matrix.
 
-Matrix Square Root with Regularization and Stability Check
 This function calculates the square root of a matrix.
 }
 \examples{

@@ -28,7 +28,7 @@ This is a simple method to calculate CCA. It is designed to calculate the CCA wh
 
 You can install the development version of hw3cca from [GitHub](https://github.com/) with:
 
-```{r}
+```{r warning=FALSE}
 # You can install it with vignettes
 # devtools::install_github("lianchenglu/biostat625hw3")
 devtools::install_github('lianchenglu/biostat625hw3',build_vignettes =T)
@@ -36,7 +36,7 @@ devtools::install_github('lianchenglu/biostat625hw3',build_vignettes =T)
 
 ## Usage
 
-In conclusion, there are 4 steps to perform CCA by R
+In general, there are 4 steps to perform CCA by R
 
 1.  Load the raw data
 
@@ -67,23 +67,13 @@ cca_simple(x2, y2)[1]
 cancor(x2, y2)[1]
 ```
 
-## test
+## Test
 Comparison against the original R functions on simulated datasets to demonstrate both the correctness (e.g., via all.equal()) 
 
 ```{r echo=FALSE}
 library(testthat)
 test_that("cca_simple function", {
-  # Using R's built-in cancor function to get the baseline results,
-  # only the corrected correlations, x and y coefficients are obtained
-  benchmark <- cancor(x1, y1)[1:3]
-  # Get test results using the cca_simple to be tested
-  result <- cca_simple(x1, y1)
-  # Test to match benchmark results to test results
-  expect_equal(result, benchmark, tolerance = 0.0001)
-  # Time test the function using system time
-  print(system.time(cca_simple(x1, y1)))
-  # Time test R's built-in cancor function using system time
-  print(system.time(cancor(x1, y1)))
+  expect_equal(cca_simple(x1, y1), cancor(x1, y1)[1:3], tolerance = 0.0001)
 })
 ```
 

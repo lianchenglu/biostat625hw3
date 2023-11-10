@@ -1,4 +1,5 @@
-#' Matrix Square Root with Regularization and Stability Check
+#' Matrix Square Root
+#'
 #' This function calculates the square root of a matrix.
 #'
 #' @param m A matrix which we want to find the square root of.
@@ -14,7 +15,7 @@
 #' }
 #' @export
 
-#' Matrix Square Root with Regularization and Stability Check
+# Matrix Square Root
 matrixsqrt <- function(m) {
   eig <- eigen(m)
   Q <- eig$vectors
