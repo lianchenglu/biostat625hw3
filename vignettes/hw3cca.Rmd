@@ -58,13 +58,13 @@ cca_simple(x1, y1)
 cancor(x1, y1)[1:3]
 ```
 
-Similarly, you can gernerate a bigger dataset.
+Similarly, you can use the real-world dataset and find their correlation.
 
 ```{r}
-x2 <- matrix(rnorm(2000000), 400000, 5)
-y2 <- matrix(rnorm(2000000), 400000, 5)
-cca_simple(x2, y2)[1]
-cancor(x2, y2)[1]
+test_data <- hw3cca::data
+test_data <- scale(test_data)
+cca_simple(test_data[,1:4],test_data[,5:8])
+cancor(test_data[,1:4],test_data[,5:8])[1:3]
 ```
 
 ## Test
