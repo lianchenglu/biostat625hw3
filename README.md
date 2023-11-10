@@ -16,7 +16,8 @@ You can install the development version of hw3cca from [GitHub](https://github.c
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("lianchenglu/biostat625_hw3")
+# devtools::install_github("lianchenglu/biostat625hw3")
+devtools::install_github('lianchenglu/biostat625hw3',build_vignettes =T)
 ```
 
 ## Example
@@ -39,7 +40,7 @@ cancor(x,y)[1:3]
 
 x <- matrix(rnorm(200000), 5000, 40)
 y <- matrix(rnorm(200000), 5000, 40)
-cca_simple(x, y)
-cancor(x,y)[1:3]
+#cca_simple(x, y)
+#cancor(x,y)[1:3]
 ```
 
