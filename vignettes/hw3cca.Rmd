@@ -28,7 +28,7 @@ This is a simple method to calculate CCA. It is designed to calculate the CCA wh
 
 You can install the development version of hw3cca from [GitHub](https://github.com/) with:
 
-```{r warning=FALSE}
+```{r warning=FALSE, eval=FALSE}
 # You can install it with vignettes
 # devtools::install_github("lianchenglu/biostat625hw3")
 devtools::install_github('lianchenglu/biostat625hw3',build_vignettes =T)
