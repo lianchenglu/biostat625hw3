@@ -71,18 +71,37 @@ cancor(x1, y1)[1:3]
 #> [2,]  0.006809384 -0.007337660
 ```
 
-Similarly, you can gernerate a bigger dataset.
+Similarly, you can use the real-world dataset and find their correlation.
 
 ``` r
-x2 <- matrix(rnorm(2000000), 400000, 5)
-y2 <- matrix(rnorm(2000000), 400000, 5)
-cca_simple(x2, y2)[1]
+test_data <- hw3cca::data
+test_data <- scale(test_data)
+cca_simple(test_data[,1:4],test_data[,5:8])
+cancor(test_data[,1:4],test_data[,5:8])[1:3]
 #> $cor
-#> [1] 0.0038819746 0.0026011925 0.0024372356 0.0012142998 0.0004935721
-cancor(x2, y2)[1]
-#> $cor
-#> [1] 0.0038819746 0.0026011925 0.0024372356 0.0012142998 0.0004935721
+#> [1] 0.7630518 0.4355692 0.3078966 0.1737088
+#> 
+#> $xcoef
+#>          [,1]       [,2]        [,3]       [,4]
+#> X1 -0.4668262  0.2154764 -0.34902573  0.1258576
+#> X2 -0.2615724 -0.1252786 -0.06176509 -0.1893822
+#> X3  0.4112870 -0.1923069  0.36057361  0.3507187
+#> X4  0.0650801  0.1088261  0.21773128 -0.3388761
+#> 
+#> $ycoef
+#>           [,1]        [,2]       [,3]        [,4]
+#> Y1  0.05635204 -0.16392596 -0.1686144  0.03154977
+#> Y2 -0.06564686 -0.02114819  0.1039148  0.21842781
+#> Y3 -0.05949765 -0.27090910  0.1553569 -0.01063178
+#> Y4  0.17942088 -0.14349242  0.1837260 -0.02334318
 ``` 
+
+The linear combination of the first canonical variables could be written as
+
+$U=-0.467X_{1}-0.262X_{2}+0.411X_{3}+0.065X_{4}$
+
+$V=0.056Y_{1}-0.066Y_{2}-0.059Y_{3}+0.179Y_{4}$
+
 
 ## Test
 Comparison against the original R functions on simulated datasets to demonstrate both the correctness.
