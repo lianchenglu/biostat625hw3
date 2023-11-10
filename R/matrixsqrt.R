@@ -7,12 +7,9 @@
 #' @return The square root of the input matrix m.
 #'
 #' @examples
-#' matrixsqrt <- function(m) {
-#'    eig <- eigen(m)
-#'    Q <- eig$vectors
-#'    rsqrtD <- sqrt(eig$values)
-#'    return(Q %*% diag(rsqrtD) %*% t(Q))
-#' }
+#' x <- cov(matrix(rnorm(2000), 1000, 2))
+#' matrixsqrt(x)
+#'
 #' @export
 
 # Matrix Square Root

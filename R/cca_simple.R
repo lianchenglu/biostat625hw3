@@ -1,28 +1,3 @@
-#' Matrix Square Root
-#'
-#' This function calculates the square root of a matrix.
-#'
-#' @param m A matrix which we want to find the square root of.
-#'
-#' @return The square root of the input matrix m.
-#'
-#' @examples
-#' matrixsqrt <- function(m) {
-#'    eig <- eigen(m)
-#'    Q <- eig$vectors
-#'    rsqrtD <- sqrt(eig$values)
-#'    return(Q %*% diag(rsqrtD) %*% t(Q))
-#' }
-#' @export
-
-# Matrix Square Root
-matrixsqrt <- function(m) {
-  eig <- eigen(m)
-  Q <- eig$vectors
-  rsqrtD <- sqrt(eig$values)
-  return(Q %*% diag(rsqrtD) %*% t(Q))
-}
-
 #' Simple Canonical Correlation Analysis
 #'
 #' This function conducts the simple Canonical Correlation Analysis (CCA) between two sets of variables.
@@ -33,25 +8,22 @@ matrixsqrt <- function(m) {
 #' @param y is another matrix/dataframe where each column is a variable and each row is an observation.
 #'
 #' @return A list containing:
-#' - "cor": The canonical correlation coefficients
-#' - "xcoef": The canonical vector of x standardized
-#' - "ycoef": The canonical vector of y standardized
+#' \itemize{
+#'   \item{"cor":}{The canonical correlation coefficients.}
+#'   \item{"xcoef":}{The canonical vector of x standardized.}
+#'   \item{"ycoef":}{The canonical vector of y standardized.}
+#' }
 #'
 #' @examples
 #' x <- matrix(rnorm(2000), 1000, 2)
 #' y <- matrix(rnorm(2000), 1000, 2)
 #' res <- cca_simple(x, y)
 #' print(res)
-
-#' x <- matrix(rnorm(200000), 40000, 5)
-#' y <- matrix(rnorm(200000), 40000, 5)
-#' res <- cca_simple(x, y)
-#' print(res)
 #'
-#' x <- matrix(rnorm(2000000), 400000, 5)
-#' y <- matrix(rnorm(2000000), 400000, 5)
-#' res <- cca_simple(x, y)
-#' print(res)
+#' test_data <- hw3cca::data
+#' test_data <- scale(test_data)
+#' cca_simple(test_data[,1:4],test_data[,5:8])
+#' cancor(test_data[,1:4],test_data[,5:8])[1:3]
 #'
 #' system.time(cca_simple(x,y)) # Time of my function
 #' system.time(cancor(x,y)[1:3]) # Time of the R build-in cca function
