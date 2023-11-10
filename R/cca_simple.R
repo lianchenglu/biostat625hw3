@@ -1,4 +1,4 @@
-#' Matrix Square Root with Regularization and Stability Check
+#' Matrix Square Root
 #' This function calculates the square root of a matrix.
 #'
 #' @param m A matrix which we want to find the square root of.
@@ -14,7 +14,7 @@
 #' }
 #' @export
 
-#' Matrix Square Root with Regularization and Stability Check
+#' Matrix Square Root
 matrixsqrt <- function(m) {
   eig <- eigen(m)
   Q <- eig$vectors
@@ -23,7 +23,6 @@ matrixsqrt <- function(m) {
 }
 
 #' Simple Canonical Correlation Analysis
-#'
 #' This function conducts the simple Canonical Correlation Analysis (CCA) between two sets of variables.
 #'
 #' @param x is a matrix/dataframe where each column is a variable and each row is an observation.
