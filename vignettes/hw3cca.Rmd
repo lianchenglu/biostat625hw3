@@ -1,0 +1,35 @@
+---
+title: "hw3cca"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{hw3cca}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(hw3cca)
+## basic example code
+set.seed(123)
+x <- matrix(rnorm(2000), 1000, 2)
+y <- matrix(rnorm(2000), 1000, 2)
+cca_simple(x, y)
+cancor(x,y)[1:3]
+
+x <- matrix(rnorm(200000), 40000, 5)
+y <- matrix(rnorm(200000), 40000, 5)
+cca_simple(x, y)
+cancor(x,y)[1:3]
+
+x <- matrix(rnorm(200000), 5000, 40)
+y <- matrix(rnorm(200000), 5000, 40)
+cca_simple(x, y)
+cancor(x,y)[1:3]
+```
