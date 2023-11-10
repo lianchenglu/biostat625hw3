@@ -27,6 +27,8 @@ matrixsqrt <- function(m) {
 #'
 #' This function conducts the simple Canonical Correlation Analysis (CCA) between two sets of variables.
 #'
+#' @importFrom stats cov
+#'
 #' @param x is a matrix/dataframe where each column is a variable and each row is an observation.
 #' @param y is another matrix/dataframe where each column is a variable and each row is an observation.
 #'
