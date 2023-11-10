@@ -73,9 +73,9 @@ $U=-0.467X_{1}-0.262X_{2}+0.411X_{3}+0.065X_{4}$
 $V=0.056Y_{1}-0.066Y_{2}-0.059Y_{3}+0.179Y_{4}$
 
 ## Test
-Comparison against the original R functions on simulated datasets to demonstrate both the correctness (e.g., via all.equal()) 
+Comparison against the original R functions on simulated datasets to demonstrate both the correctness.
 
-```{r echo=FALSE}
+```{r }
 library(testthat)
 test_that("cca_simple function", {
   expect_equal(cca_simple(x1, y1), cancor(x1, y1)[1:3], tolerance = 0.0001)
@@ -91,6 +91,5 @@ bench::mark(
   iterations = 10,
   check = TRUE
 )
-
 ```
 

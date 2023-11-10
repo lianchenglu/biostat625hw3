@@ -109,9 +109,6 @@ Comparison against the original R functions on simulated datasets to demonstrate
 ``` r
 library(testthat)
 test_that("cca_simple function", {
-  # Test to match benchmark results to test results
-  library(testthat)
-  test_that("cca_simple function", {
   expect_equal(cca_simple(x1, y1), cancor(x1, y1)[1:3], tolerance = 0.0001)
 })
 #> Test passed 🌈
