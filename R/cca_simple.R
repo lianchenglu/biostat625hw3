@@ -35,6 +35,11 @@ cca_simple <- function(x, y) {
     return('Unequal input row!')
   }
 
+  # check dimension
+  if (sum(is.na(x)) == nrow(x) || sum(is.na(y)) == nrow(y)) {
+    return('0 dimension in x or y')
+  }
+
   # centralizer the data
   x <- scale(x, center = TRUE, scale = FALSE)
   y <- scale(y, center = TRUE, scale = FALSE)
