@@ -9,10 +9,16 @@
 ## Overview
 
 The goal of hw3cca is to replicate some of the functionality of the existing R package. 
-This is a simple method to calculate CCA. It is designed to calculate the CCA when the number of input X and Y columns is the same. The correlation generated is correct when the number of columns is different, but the number of rows or columns for the correlation coefficient will be different.
+This is a simple method to calculate CCA. It is designed to calculate the CCA when the number of input X and Y columns is the same. The correlation generated is correct when the number of columns is different, but the number of rows or columns for the correlation coefficient will be different. Anyway, the `cor` calculated by my function is same with the `cancor` function's result.
+
+The canonical correlation coefficient shows the degree of maximum possible correlation between two sets of variables. The first pair of canonical variables has the highest correlation, followed by the second, and so on. The canonical coefficients show the specific contributions of the original variables that make up each pair of canonical variables. A positive coefficient means a positive correlation between variables, and a negative coefficient means a negative correlation. These results can help us to understand the pattern of association between the two sets of variables. For example, the first pair of canonical variables captures the most significant association patterns, and subsequent pairs capture the remaining, relatively small association patterns. 
+
+You can see detailed definition from [Wiki](https://en.wikipedia.org/wiki/Canonical_correlation)
 
 * `cca_simple()` calculate the simple Canonical Correlation.
 * `cancor()` is R-build-in function to test whether the result is the same.
+* `matrixsqrt()` is used to calculated the Matrix Square Root.
+
 ## Installation
 
 You can install the development version of hw3cca from [GitHub](https://github.com/) with:
@@ -102,21 +108,21 @@ cancor(test_data[,1:4],test_data[,5:8])[1:3]
 
 `cor` are canonical correlation coefficients between two sets of variables, which measure the degree of association between each pair of canonical variables. The first coefficient, 0.76, indicates a high positive correlation between the first pair of canonical variables. The subsequent coefficient decreases gradually, indicating that the degree of correlation decreases gradually.
 
-`xcoef` Each column of this matrix represents a set of canonical coefficients used to construct the portion of the first set of variables in each pair of canonical variables. For example, the first column [-0.4668262, -0.2615724, 0.4112870, 0.0650801] represents the linear combination coefficients of the first set of variables in the first pair of canonical variables.
-
-`ycoef` Similarly, each column of this matrix represents another set of canonical coefficients used to construct the portion of the second set of variables in each pair of canonical variables. For example, the first column [0.05635204, -0.06564686, -0.05949765, 0.17942088] represents the linear combination coefficients of the second set of variables in the first pair of canonical variables.
-
-The canonical correlation coefficient shows the degree of maximum possible correlation between two sets of variables. The first pair of canonical variables has the highest correlation, followed by the second, and so on. The canonical coefficients reveal the specific contributions of the original variables that make up each pair of canonical variables. A positive coefficient means a positive correlation between variables, and a negative coefficient means a negative correlation. These results can help to understand the pattern of association between the two sets of variables. For example, the first pair of canonical variables captures the most significant association patterns, and subsequent pairs capture the remaining, relatively small association patterns.
+`xcoef` Each column of this matrix indicates a set of canonical coefficients used to construct the portion of the first set of variables in each pair of canonical variables. For example, the first column [-0.4668262, -0.2615724, 0.4112870, 0.0650801] represents the linear combination coefficients of the first set of variables in the first pair of canonical variables.
 
 The linear combination of the first canonical variables could be written as
 
 $U=-0.467X_{1}-0.262X_{2}+0.411X_{3}+0.065X_{4}$
 
+`ycoef` Similarly, each column of this matrix indicates another set of canonical coefficients used to construct the portion of the second set of variables in each pair of canonical variables. For example, the first column [0.05635204, -0.06564686, -0.05949765, 0.17942088] represents the linear combination coefficients of the second set of variables in the first pair of canonical variables.
+
+The linear combination of the first canonical variables could be written as
+
 $V=0.056Y_{1}-0.066Y_{2}-0.059Y_{3}+0.179Y_{4}$
 
 ### Example 3
 
-Here is another real-world data
+Here is another real-world data from R build-in dataset: `LifeCycleSavings `
 
 ```r
 pop <- LifeCycleSavings[, 2:3]
@@ -133,9 +139,9 @@ cca_simple(pop, oec)[1]
 
 The high correlation coefficient (0.82) of the first pair of canonical variables means that there is a strong linear relationship between the variables in the `pop` group (population data) and the variables in the `oec` group (economic indicators).
 
-By looking at the canonical coefficients, we can understand the specific variables that make up this relationship and the extent to which they contribute. A positive coefficient means a positive correlation between variables, and a negative coefficient means a negative correlation between variables.
+By looking at the canonical coefficients, we can find the specific variables that make up this relationship and the extent to which they contribute. A positive coefficient means a positive correlation between variables, and a negative coefficient means a negative correlation between variables.
 
-The weak correlation of the second pair of canonical variables (0.37) suggests that in these particular linear combinations, the relationship between the two sets of variables is not as strong as the relationship in the first pair of canonical variables.
+The weak correlation of the second pair of canonical variables (0.37) shows that in these particular linear combinations, the relationship between two sets of variables is not as strong as that in the first pair of canonical variables.
 
 ## Test
 Comparison against the original R functions on simulated datasets to demonstrate both the correctness.
