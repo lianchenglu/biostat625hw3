@@ -30,6 +30,11 @@
 #' @export
 
 cca_simple <- function(x, y) {
+  # whether they have the same row
+  if (nrow(x) != nrow(y)){
+    return('Unequal input row!')
+  }
+
   # centralizer the data
   x <- scale(x, center = TRUE, scale = FALSE)
   y <- scale(y, center = TRUE, scale = FALSE)
