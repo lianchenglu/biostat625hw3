@@ -30,13 +30,13 @@
 #' @export
 
 cca_simple <- function(x, y) {
-  # whether they have the same row
+  # check whether they have the same row
   if (nrow(x) != nrow(y)){
     return('Unequal input row!')
   }
 
   # check dimension
-  if (sum(is.na(x)) == nrow(x) || sum(is.na(y)) == nrow(y)) {
+  if (sum(is.na(x)) == nrow(x)*ncol(x) || sum(is.na(y)) == nrow(y)*ncol(y)) {
     return('0 dimension in x or y')
   }
 
