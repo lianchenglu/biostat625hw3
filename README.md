@@ -16,6 +16,7 @@ The canonical correlation coefficient shows the degree of maximum possible corre
 You can see detailed definition from [Wiki](https://en.wikipedia.org/wiki/Canonical_correlation)
 
 * `cca_simple()` calculate the simple Canonical Correlation.
+* `cca_simple_cpp()` calculate the simple Canonical Correlation via rcpp.
 * `cancor()` is R-build-in function to test whether the result is the same.
 * `matrixsqrt()` is used to calculated the Matrix Square Root.
 
