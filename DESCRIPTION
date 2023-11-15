@@ -20,8 +20,8 @@ Suggests:
     testthat (>= 3.0.0),
     bench,
     devtools
+RoxygenNote: 7.2.3
 Imports:
   Rcpp
 LinkingTo:
   Rcpp, RcppArmadillo
-RoxygenNote: 7.2.3

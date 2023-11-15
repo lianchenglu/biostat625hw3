@@ -2,6 +2,13 @@
 
 export(cca_simple)
 export(cca_simple_cpp)
+export(covarianceMatrix)
 export(data)
+export(eigenValues)
+export(matrixMultiply)
+export(matrixSqrtcpp)
 export(matrixsqrt)
+export(scaleC)
+export(solveMatrixcpp)
+export(svdDecomposition)
 importFrom(stats,cov)
