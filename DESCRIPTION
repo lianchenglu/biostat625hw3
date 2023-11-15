@@ -24,4 +24,5 @@ RoxygenNote: 7.2.3
 Imports:
   Rcpp
 LinkingTo:
-  Rcpp, RcppArmadillo
+  Rcpp, 
+  RcppArmadillo
