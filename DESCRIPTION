@@ -22,7 +22,8 @@ Suggests:
     devtools
 RoxygenNote: 7.2.3
 Imports:
-  Rcpp
+    Rcpp,
+    RcppArmadillo
 LinkingTo:
-  Rcpp, 
-  RcppArmadillo
+    Rcpp (>= 0.11.0),
+    RcppArmadillo
