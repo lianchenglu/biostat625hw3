@@ -199,7 +199,7 @@ test_that("cca_simple function", {
 #> Test passed 🌈
 ```
 
-The efficiency of the implemented functions. Running speed from slow to fast is `cca_simple`, `cancor`, `cca_simple_cpp`. 
+The efficiency of the implemented functions. Running speed from slow to fast is `cca_simple`, `cancor`, `cca_simple_cpp`. Functions that run with cpp are faster than functions that come with the system
 
 ``` r
 bench::mark(
@@ -209,10 +209,4 @@ bench::mark(
   iterations = 10,
   check = TRUE
 )
-#> # A tibble: 3 × 6
-#>   expression                  min   median `itr/sec` mem_alloc `gc/sec`
-#>   <bch:expr>             <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 cca_simple(x1, y1)       2.03ms   2.09ms      478.  940.64KB        0
-#> 2 cancor(x1, y1)[1:3]    957.72µs   1.37ms      718.    2.44MB        0
-#> 3 cca_simple_cpp(x1, y1)   6.49ms   6.62ms      152.  675.08KB        0
 ```
