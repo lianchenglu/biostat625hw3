@@ -135,7 +135,7 @@ test_that("cca_simple function", {
 })
 ```
 
-The efficiency of the implemented functions. Running speed from slow to fast is `cca_simple`, `cancor`, `cca_simple_cpp`. Functions run with c++ are twice as fast as functions that come with the system
+The efficiency of the implemented functions. Running speed from slow to fast is `cca_simple`, `cancor`, `cca_simple_cpp`. 
 
 ```{r}
 bench::mark(
