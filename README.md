@@ -46,7 +46,7 @@ In general, there are 4 steps to perform CCA by R
 
 2.  Scale original data
 
-3.  Canonical correlation analysis `simple_cca` (or `cancor`)
+3.  Canonical correlation analysis `simple_cca` (or `cancor`, `simple_cca_cpp`)
 
 4.  Correlation coefficient significance test
 
