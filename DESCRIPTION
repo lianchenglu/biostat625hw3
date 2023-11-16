@@ -25,5 +25,5 @@ Imports:
     Rcpp,
     RcppArmadillo
 LinkingTo:
-    Rcpp (>= 0.11.0),
+    Rcpp,
     RcppArmadillo
