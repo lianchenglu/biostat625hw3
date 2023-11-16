@@ -26,8 +26,17 @@ The canonical correlation coefficient shows the degree of maximum possible corre
 You can see detailed definition from [Wiki](https://en.wikipedia.org/wiki/Canonical_correlation)
 
 * `cca_simple()` calculate the simple Canonical Correlation.
+* `cca_simple_cpp()` calculate the simple Canonical Correlation via rcpp.
 * `cancor()` is R-build-in function to test whether the result is the same.
 * `matrixsqrt()` is used to calculated the Matrix Square Root.
+
+* `covarianceMatrix()` Compute Covariance Matrix via c++
+* `eigenValues()` Compute Eigenvalues via c++
+* `matrixMultiply()` Matrix Multiplication via c++
+* `matrixSqrtcpp()` Compute the Square Root of a Matrix via c++
+* `scaleC()` Scale a Matrix via c++
+* `solveMatrixcpp()` Compute the Inverse of a Matrix via c++
+* `svdDecomposition()` ngular Value Decomposition via c++.
 
 ## Installation
 
@@ -47,7 +56,7 @@ In general, there are 4 steps to perform CCA by R
 
 2.  Scale original data
 
-3.  Canonical correlation analysis `simple_cca` (or `cancor`)
+3.  Canonical correlation analysis `simple_cca` (or `cancor`, `simple_cca_cpp`)
 
 4.  Correlation coefficient significance test
 
@@ -113,7 +122,7 @@ By looking at the canonical coefficients, we can find the specific variables tha
 The weak correlation of the second pair of canonical variables (0.37) shows that in these particular linear combinations, the relationship between two sets of variables is not as strong as that in the first pair of canonical variables.
 
 ## Test
-Comparison against the original R functions on simulated datasets to demonstrate both the correctness.
+Comparison against the original R functions on simulated datasets to demonstrate both the correctness. 
 
 ```{r }
 library(testthat)
@@ -126,7 +135,7 @@ test_that("cca_simple function", {
 })
 ```
 
-The efficiency of the implemented functions.
+The efficiency of the implemented functions. Running speed from slow to fast is `cca_simple`, `cancor`, `cca_simple_cpp`. Functions run with c++ are twice as fast as functions that come with the system
 
 ```{r}
 bench::mark(

@@ -1,4 +1,11 @@
 library(testthat)
+test_that('stop function',){
+  x <- matrix(rnorm(20), 10, 2)
+  y <- matrix(rnorm(200), 40, 5)
+  expect_error(covarianceMatrix(x, y), "Number of rows of matrices must match!")
+  expect_error(matrixMultiply(x, y), "Incompatible matrix dimensions")
+}
+
 test_that("cca_simple function", {
   # Create a multivariable data set
   set.seed(123)

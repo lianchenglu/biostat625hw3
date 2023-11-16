@@ -16,8 +16,17 @@ The canonical correlation coefficient shows the degree of maximum possible corre
 You can see detailed definition from [Wiki](https://en.wikipedia.org/wiki/Canonical_correlation)
 
 * `cca_simple()` calculate the simple Canonical Correlation.
+* `cca_simple_cpp()` calculate the simple Canonical Correlation via rcpp.
 * `cancor()` is R-build-in function to test whether the result is the same.
 * `matrixsqrt()` is used to calculated the Matrix Square Root.
+
+* `covarianceMatrix()` Compute Covariance Matrix via c++
+* `eigenValues()` Compute Eigenvalues via c++
+* `matrixMultiply()` Matrix Multiplication via c++
+* `matrixSqrtcpp()` Compute the Square Root of a Matrix via c++
+* `scaleC()` Scale a Matrix via c++
+* `solveMatrixcpp()` Compute the Inverse of a Matrix via c++
+* `svdDecomposition()` ngular Value Decomposition via c++.
 
 ## Installation
 
@@ -77,6 +86,19 @@ cancor(x1, y1)[1:3]
 #>              [,1]         [,2]
 #> [1,] -0.007201230 -0.006935035
 #> [2,]  0.006809384 -0.007337660
+cca_simple_cpp(x1, y1)
+#> $cor
+#> [1] 0.026811015 0.007223339
+#> 
+#> $xcoef
+#>               [,1]          [,2]
+#> [1,] -0.0099710852 -0.0009297077
+#> [2,] -0.0008671031  0.0099473100
+#> 
+#> $ycoef
+#>              [,1]         [,2]
+#> [1,] -0.007201230 -0.006935035
+#> [2,]  0.006809384 -0.007337660
 ```
 
 ### Example 2
@@ -97,6 +119,23 @@ cancor(test_data[,1:4],test_data[,5:8])[1:3]
 #> X2 -0.2615724 -0.1252786 -0.06176509 -0.1893822
 #> X3  0.4112870 -0.1923069  0.36057361  0.3507187
 #> X4  0.0650801  0.1088261  0.21773128 -0.3388761
+cca_simple_cpp(test_data[,1:4],test_data[,5:8])
+#> $cor
+#> [1] 0.7630518 0.4355692 0.3078966 0.1737088
+#> 
+#> $xcoef
+#>            [,1]       [,2]        [,3]       [,4]
+#> [1,] -0.4668262  0.2154764  0.34902573 -0.1258576
+#> [2,] -0.2615724 -0.1252786  0.06176509  0.1893822
+#> [3,]  0.4112870 -0.1923069 -0.36057361 -0.3507187
+#> [4,]  0.0650801  0.1088261 -0.21773128  0.3388761
+#> 
+#> $ycoef
+#>             [,1]        [,2]       [,3]        [,4]
+#> [1,]  0.05635204 -0.16392596  0.1686144 -0.03154977
+#> [2,] -0.06564686 -0.02114819 -0.1039148 -0.21842781
+#> [3,] -0.05949765 -0.27090910 -0.1553569  0.01063178
+#> [4,]  0.17942088 -0.14349242 -0.1837260  0.02334318
 #> 
 #> $ycoef
 #>           [,1]        [,2]       [,3]        [,4]
@@ -133,6 +172,9 @@ cancor(pop, oec)[1]
 cca_simple(pop, oec)[1]
 #> $cor
 #> [1] 0.8247966 0.3652762
+cca_simple_cpp(pop, oec)[1]
+#> $cor
+#> [1] 0.8247966 0.3652762
 ```
 
 `pop` contains population-related data from the `LifeCycleSavings` dataset. `oec` is an economic indicator.
@@ -157,18 +199,13 @@ test_that("cca_simple function", {
 #> Test passed 🌈
 ```
 
-The efficiency of the implemented functions.
+The efficiency of the implemented functions. Running speed from slow to fast is `cca_simple`, `cancor`, `cca_simple_cpp`. Functions run with c++ are twice as fast as functions that come with the system
 
 ``` r
-bench::mark(
-  cca_simple(x1, y1),
-  cancor(x1,y1)[1:3],
-  iterations = 10,
-  check = TRUE
-)
-#> # A tibble: 2 × 6
-#>   expression               min   median `itr/sec` mem_alloc `gc/sec`
-#>   <bch:expr>          <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 cca_simple(x1, y1)    1.98ms   2.05ms      487.   784.3KB        0
-#> 2 cancor(x1, y1)[1:3] 968.55µs   1.19ms      762.    2.44MB        0
+#> # A tibble: 3 × 6
+#>   expression                  min   median `itr/sec` mem_alloc `gc/sec`
+#>   <bch:expr>             <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
+#> 1 cca_simple(x1, y1)       2.14ms   2.17ms      459.  940.64KB        0
+#> 2 cancor(x1, y1)[1:3]     944.7µs   1.33ms      730.    2.44MB        0
+#> 3 cca_simple_cpp(x1, y1)   6.28ms   6.34ms      157.  675.08KB        0
 ```
