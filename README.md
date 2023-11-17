@@ -32,6 +32,10 @@ You can see detailed definition from [Wiki](https://en.wikipedia.org/wiki/Canoni
 
 You can install the development version of hw3cca from [GitHub](https://github.com/) with:
 
+* You should inlucde `llapack` and `lblas` library in your computer, or you can use [biostat server](https://biostat-login.sph.umich.edu/) to install this package.
+
+* You can find how to install [LAPACK](https://github.com/Reference-LAPACK/lapack) here.
+
 ``` r
 # You can install it with vignettes
 # devtools::install_github("lianchenglu/biostat625hw3")
@@ -199,14 +203,20 @@ test_that("cca_simple function", {
 #> Test passed 🌈
 ```
 
-The efficiency of the implemented functions. Running speed from slow to fast is `cca_simple`, `cancor`, `cca_simple_cpp`. Functions that run with cpp are faster than functions that come with the system
+The efficiency of the implemented functions. Running speed from slow to fast is `cca_simple`, `cancor`, `cca_simple_cpp`. Functions that run with cpp are faster than functions that come with the system. However, the it run slower due to r markdown problems. You can run `cca_simple_cpp` manually. It will faster after compiling.
 
 ``` r
 bench::mark(
-  cca_simple(x1, y1),
-  cancor(x1,y1)[1:3],
-  cca_simple_cpp(x1, y1),
+  cca_simple(x1, y1)[1],
+  cancor(x1,y1)[1],
+  cca_simple_cpp(x1, y1)[1],
   iterations = 10,
   check = TRUE
 )
+#> # A tibble: 3 × 6
+#>   expression                     min   median `itr/sec` mem_alloc `gc/sec`
+#>   <bch:expr>                <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
+#> 1 cca_simple(x1, y1)[1]       1.69ms   1.79ms      518.  940.64KB     57.5
+#> 2 cancor(x1, y1)[1]         900.43µs   1.02ms      991.    2.44MB      0  
+#> 3 cca_simple_cpp(x1, y1)[1]    1.9ms   2.02ms      494.  675.08KB      0
 ```
