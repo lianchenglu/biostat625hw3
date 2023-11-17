@@ -13,6 +13,7 @@
 #' covarianceMatrix(mat1)
 #' covarianceMatrix(mat1, mat2)
 #' @export
+#'
 covarianceMatrix <- function(x, y = NULL) {
     .Call('_hw3cca_covarianceMatrix', PACKAGE = 'hw3cca', x, y)
 }
