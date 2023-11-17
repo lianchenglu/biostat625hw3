@@ -42,6 +42,10 @@ You can see detailed definition from [Wiki](https://en.wikipedia.org/wiki/Canoni
 
 You can install the development version of hw3cca from [GitHub](https://github.com/) with:
 
+* You should inlucde `llapack` and `lblas` library in your computer, or you can use [biostat server](https://biostat-login.sph.umich.edu/) to install this package.
+
+* You can find how to install [LAPACK](https://github.com/Reference-LAPACK/lapack) here.
+
 ```{r warning=FALSE, eval=FALSE}
 # You can install it with vignettes
 # devtools::install_github("lianchenglu/biostat625hw3")
@@ -145,15 +149,16 @@ bench::mark(
 )
 ```
 
-You can run `cca_simple_cpp` in your computer. It will faster after compiling.
+The efficiency of the implemented functions. Running speed from slow to fast is `cca_simple`, `cancor`, `cca_simple_cpp`. Functions that run with cpp are faster than functions that come with the system. However, the it run slower due to r markdown problems. You can run `cca_simple_cpp` manually. It will faster after compiling.
 
-```{r warning=FALSE, eval=FALSE}
+```{r warning=FALSE}
 bench::mark(
   cca_simple(x1, y1)[1],
   cancor(x1,y1)[1],
-  cca_simple_cpp(x1, y1),
+  cca_simple_cpp(x1, y1)[1],
   iterations = 10,
   check = TRUE
 )
 ```
+
 
